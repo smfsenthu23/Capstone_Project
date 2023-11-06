@@ -1,0 +1,17 @@
+.main__container
+{
+    background-color: black;
+    background-size: cover;
+    padding:1px;
+
+}
+
+
+img {
+ 
+max-width: 60%;
+ height:270px;
+  margin-left: 20%;
+  padding:0%;
+}
+
