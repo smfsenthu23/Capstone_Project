@@ -2,7 +2,7 @@
 
 <img width="500" height="500" alt="Img" src="https://github.com/smfsenthu23/Capstone_Project/assets/130302643/630a7740-0974-48c5-aa7b-8c642e647085">  
 
-Visit site :
+Visit site :  https://smfsenthu23.github.io/Capstone_Project/
 
 This capstone project allows you to explore information about characters and houses from the "A Song of Ice and Fire" series.
 
