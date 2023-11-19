@@ -5,15 +5,19 @@
    padding-left: 10%;
    padding-right:10%;
     background-color:lightsalmon;
-    text-align: center;
+    
     font-size: 32px;
     
+}
+.pagination
+{
+  text-align: center;
 }
 
 
 .houses__infoContainer
 {
-  text-align: center;  
+    
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -26,4 +30,20 @@
 .page_container
 {
   padding: 2px;
+}
+ul.house-list {
+  list-style-type: none;
+}
+
+ul.house-list li b {
+  position: relative;
+  display:inline-block;
+  min-width:150px;
+  margin-right:10px;
+}
+
+ul.house-list li b:after {
+  content: ":";
+  position:absolute;
+  right:0;
 }

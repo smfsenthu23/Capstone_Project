@@ -13,10 +13,10 @@ function Houses()
     const pageNumber = page ? parseInt(page, 10) : 1;
    const [houses, setHouses] = useState([]);
    const [parsed, setParsed] = useState();
-   //const [names, setNames] = useState([]);
+   const [names, setNames] = useState([]);
    
-  
-   
+   var swnames = [];
+   const memberUrlToName = new Map();
    useEffect(()=>{
     axios.get(`https://www.anapioficeandfire.com/api/houses?page=${pageNumber}&pageSize=5`)
     .then((response)=>{
@@ -24,12 +24,54 @@ function Houses()
         setHouses(response.data)
         setParsed(parseLinkHeader(response.headers['link']))
 
-    })   
+        houses.map(house=>{
+          house.swornMembers.map(url=>{
+              axios.get(url).then(resp=> {
+                
+                //swnames.push(resp.data.name)
+                memberUrlToName.set(getCharacterId(url), resp.data.name)
+                //console.log(swnames)
+                //setNames(swnames);
+                //memberUrlToName.set(getCharacterId(url), resp.data.name);
+                
+              });
+          });
+       });
+       console.log(memberUrlToName)
+       setNames([memberUrlToName])
+    })
+    
+    /*houses.map(house=>{
+      house.swornMembers.map(url=>{
+          axios.get(url).then(resp=> {
+            
+            swnames.push(resp.data.name)
+            console.log(swnames)
+            setNames(resp.data.name);
+            //memberUrlToName.set(getCharacterId(url), resp.data.name);
+            
+          });
+      });
+   });
+   setNames(swnames)
+   */
+  console.log(names) 
   },[])
 
    const hasPrevious = pageNumber > 1;
    const lastPgNum = (parsed !== undefined? parsed.last.page : pageNumber);
    const hasNextOrLast = (lastPgNum != pageNumber);
+   /*const memberUrlToName = new Map();
+   houses.map(house=>{
+      house.swornMembers.map(url=>{
+          axios.get(url).then(resp=> {
+            //memberUrlToName['a'+getCharacterId(url)] = resp.data.name;
+            memberUrlToName.set(getCharacterId(url), resp.data.name)
+          });
+      });
+   }); */
+   //console.log(memberUrlToName)
+   //console.log(memberUrlToName.get("82"))
    
   return( 
          <div  className={styles["main__container"]}>
@@ -64,8 +106,8 @@ function Houses()
                       </li>
                       <li>
                           <b>SwornMembers </b>
-                          {data.swornMembers.map((member)=> 
-                           <span> {member} <br/></span> )}
+                          {data.swornMembers.map((member)=> {
+                           <span> {names[0].get(getCharacterId(member))} <br/></span>     })}
                       </li>
                       </ul>
                     </div>
@@ -79,5 +121,8 @@ function Houses()
   )
 }
  
+function getCharacterId(url){
+  return url.substring(url.lastIndexOf('/')+1)
+}
 
 export default Houses;

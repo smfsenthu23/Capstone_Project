@@ -6,7 +6,7 @@
    padding-right:10%;
     background-color:lightsalmon;
     font-size: 32px;
-    text-align: center;
+   
    
 }
 
@@ -25,7 +25,7 @@ a{
 
 .characters__infoContainer
 {
-  text-align: center;  
+  
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -37,9 +37,10 @@ a{
 
 .characters__info
 {
+  
    
    border-color: black;
-  display: flex;
+   display: flex;
   margin-bottom: 1rem;
 }
 
@@ -50,4 +51,22 @@ a{
 
 .pagination{
  font-size: 32px;
+ text-align: center;
+}
+
+ul.character-list {
+  list-style-type: none;
+}
+
+ul.character-list li b {
+  position: relative;
+  display:inline-block;
+  min-width:80px;
+  margin-right:10px;
+}
+
+ul.character-list li b:after {
+  content: ":";
+  position:absolute;
+  right:0;
 }

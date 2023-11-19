@@ -27,7 +27,7 @@ function Characters()
     return(
          
           <div  className={styles["main__container"]}>
-             <div className="pagination">
+             <div className={styles["pagination"]}>
                 {(pageNumber > 2) && (
                   <Link to="/characters/1"><span>First</span></Link>
                 )}
@@ -47,6 +47,42 @@ function Characters()
                 return(
                    
                     <Link to="/character" state={{urlSrc:data.url}}>
+                      <div key={id} className={styles["characters__infoContainer"]}>
+                    { /*<div className={styles["characters__info"]}> */}
+                        <ul className={styles["character-list"]}>
+                        <li>
+                        {data.name!="" ? <span><b>Name</b> {data.name}</span> : <span><b>Aliases</b> {data.aliases}</span>}
+                        
+                        </li>
+                        <li>
+                          <b>Gender</b> {data.gender}
+                          
+                          {data.gender == "Female" ? '👩' : '👨'}
+                          </li>
+                        <li>
+                          <b>Culture</b> {data.culture}
+                          </li>
+                        </ul>
+                        </div>
+                      
+                        { /* </div> */}
+                    </Link>
+                   
+
+                )
+            })}
+           
+           
+        </div>
+       
+
+    )
+}
+
+
+export default Characters;
+
+/*<Link to="/character" state={{urlSrc:data.url}}>
                         <div key={id} className={styles["characters__infoContainer"]}>
                        <div className={styles["characters__info"]}>
                         {data.name!="" ? <span>Name: {data.name}</span> : <span>Aliases: {data.aliases}</span>}
@@ -61,17 +97,4 @@ function Characters()
                         </div>
             
                    </div>
-                   </Link>
-
-                )
-            })}
-           
-           
-        </div>
-       
-
-    )
-}
-
-
-export default Characters;
+                   </Link> */
