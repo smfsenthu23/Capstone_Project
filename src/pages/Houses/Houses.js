@@ -23,8 +23,7 @@ function Houses()
       
         setHouses(response.data)
         setParsed(parseLinkHeader(response.headers['link']))
-
-    })   
+    }) 
   },[])
 
    const hasPrevious = pageNumber > 1;
@@ -63,9 +62,13 @@ function Houses()
                           {data.currentLord}
                       </li>
                       <li>
-                          <b>SwornMembers </b>
+                         
+                         <li> <b>SwornMembers </b></li>
+                          <ul>
                           {data.swornMembers.map((member)=> 
-                           <span> {member} <br/></span> )}
+                          
+                           <Link to="/character" state={{urlSrc:member}}><span> {member} <br/></span></Link> )}
+                          </ul>
                       </li>
                       </ul>
                     </div>
