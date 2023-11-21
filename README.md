@@ -15,11 +15,11 @@ broadcast over eight seasons.
 
 <h2>Features</h2>
 
-* Characters Page: List of all the characters with their names or aliases, cultures, and gender.
+* Characters Page - Characters.js : List of all the characters with their names or aliases, cultures, and gender.
 
-* Character Details Page: List of detailed information about a specific character that includes birth and death details, titles, and relationships.
+* Character Details Page - Character.js : List of detailed information about a specific character that includes birth and death details, titles, and relationships.
 
-* Houses Page: List of all houses with their names, titles, current lords, and sworn members.
+* Houses Page - Houses.js : List of all houses with their names, titles, current lords, and sworn members.
 
 <h2>API</h2>
 
